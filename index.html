@@ -6,6 +6,7 @@
     * 完成背景透视效果
     * 创建DateCalc分支
     * 完成DateCalc业务逻辑的移植
+    * 尝试黑白渐变
     * ...
 -->
 
@@ -78,46 +79,57 @@
 
     <script>
         // 换了jQuery
-        $.LessFlag = false;
-        function onMoreClicked() {
-            if ($.LessFlag === false) {
+        $(document).ready(function() {
+            // More按钮的单击响应
+            $.LessFlag = false;
+            $("#moreBtn").click(function() {
                 //var breaks = document.getElementById("breaks");
-                for (var i = 1; i <= 50; i++) {
-                    //breaks.innerHTML = "<br/>" + breaks.innerHTML;
-                    $("#breaks").append("<br/>");
-                };
-                //document.getElementById("moreBtn").innerHTML = "Less";
-                $("#moreBtn").text("Less");
-                $("#breaks").append("<p>Ok, there is no more.</p><p>Actually I made this scroll bar so that you can see the full background image :p</p>");
-                location.hash = "#breaks";
-                $.LessFlag = true;
-            } else {
-                $("#breaks").text("");
-                $("#moreBtn").text("More");
-                location.hash = "";
-                $.LessFlag = false;
-            }
-        }
+                var breaks = $("#breaks");
+                if ($.LessFlag === false) {
+                    for (var i = 1; i <= 50; i++) {
+                        //breaks.innerHTML = "<br/>" + breaks.innerHTML;
+                        breaks.append("<br/>");
+                    };
+                    //document.getElementById("moreBtn").innerHTML = "Less";
+                    $(this).text("Less");
 
-        function onHmmClicked() {            // QAQ，真的要习惯大括号不换行吗……
-            if (confirm("I said it is under construction! >.<\nHowever you may enjoy these awesome songs first.\n\nWould you like to view it on GitHub?")) {
-                //window.navigate("https://github.com/Equim-chan/equim-chan.github.io");        // 本地测试无效
-                //window.location.href="https://github.com/Equim-chan/equim-chan.github.io";    // 在当前页面跳转
-                window.open("https://github.com/Equim-chan/equim-chan.github.io");              // 在新页面跳转
-            }
-        }
+                    // 这个方法有点粗暴，但确实有效
+                    breaks.append("
+                        <p>Ok, there is no more.</p>
+                        <p title='And literally this page is always \"under construction\" xD.'>
+                            Actually I made this scroll bar so that you can see the full background image :p
+                        </p>");
+                    location.hash = "#breaks";
+                    $.LessFlag = true;
+                } else {
+                    breaks.text("");
+                    $(this).text("More");
+                    location.hash = "";
+                    $.LessFlag = false;
+                }
+            });
+
+            // Hmm按钮的单击响应
+            $("#hmmBtn").click(function()  {            // QAQ，真的要习惯大括号不换行吗……
+                if (confirm("I said it is under construction! >.<\nHowever you may enjoy these awesome songs first.\n\nWould you like to view it on GitHub?")) {
+                    //window.navigate("https://github.com/Equim-chan/equim-chan.github.io");        // 本地测试无效
+                    //window.location.href="https://github.com/Equim-chan/equim-chan.github.io";    // 在当前页面跳转
+                    window.open("https://github.com/Equim-chan/equim-chan.github.io");              // 在新页面跳转
+                }
+            });
+        });
     </script>
 </head>
 
 <body>
     <div class="coolTitle">
             <img src="res/icon/construction.png" alt="construction" height="72" weight="72"/>
-            This page is under construction.
+            <label>This page is under construction.</label>
             <img src="res/icon/construction.png" alt="construction" height="72" weight="72"/>
     </div>
 
     <div>
-        <button class="green" onclick="onHmmClicked()" style="margin-top:7px; margin-bottom:5px">Hmm?</button>
+        <button id="hmmBtn" class="green" style="margin-top:7px; margin-bottom:5px; cursor:pointer;">Hmm?</button>
     </div>
 
     <div>
@@ -127,6 +139,8 @@
 
     <div id="breaks"></div>
 
-    <div><button id="moreBtn" class="blue" onclick="onMoreClicked()" style="margin-top:5px">More</button></div>
+    <div>
+        <button id="moreBtn" class="blue" style="margin-top:5px; cursor:pointer;">More</button>
+    </div>
 </body>
 </html>
