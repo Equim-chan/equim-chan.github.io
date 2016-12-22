@@ -94,11 +94,10 @@
                     $(this).text("Less");
 
                     // 这个方法有点粗暴，但确实有效
-                    breaks.append("
-                        <p>Ok, there is no more.</p>
-                        <p title='And literally this page is always \"under construction\" xD.'>
-                            Actually I made this scroll bar so that you can see the full background image :p
-                        </p>");
+                    breaks.append("<p>Ok, there is no more.</p>" +
+                        "<p title='And literally this page is always \"under construction\" xD.'>" +
+                            "Actually I made this scroll bar so that you can see the full background image :p" +
+                        "</p>");
                     location.hash = "#breaks";
                     $.LessFlag = true;
                 } else {
