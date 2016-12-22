@@ -3,8 +3,6 @@
 <!--
     TODO:
     * 把CSS和JS从HTML中单独分离，放到src/
-    * 并加入jQuery
-    * 设置div等的id，如果有必要的话
     * 完成背景透视效果
     * 创建DateCalc分支
     * 完成DateCalc业务逻辑的移植
@@ -16,6 +14,8 @@
     <title>Equim's Practice Zone</title>
     <link rel="icon" href="res/icon/head.ico" type="image/x-ico" />
 
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
     <style type="text/css">
         /* CSS3，设置background-size:100%可以自适应背景图片，且保持比例不变 */
         body {
@@ -25,6 +25,10 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: 100%;
+        }
+
+        p {
+            margin: 4px;
         }
 
         div {
@@ -43,14 +47,63 @@
             /*font-weight: bold;*/
             text-decoration: underline;
         }
+
+        button{  
+            width: 140px;
+            line-height: 38px;
+            text-align: center;
+            font-weight: bold;
+            color: #fff;
+            text-shadow:1px 1px 1px #333;
+            border-radius: 5px;
+            margin:0 20px 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .green{
+            border:1px solid #64c878;
+            box-shadow: 0 1px 2px #b9ecc4 inset,0 -1px 0 #6c9f76 inset,0 -2px 3px #b9ecc4 inset;
+            background: -webkit-linear-gradient(top,#90dfa2,#84d494);
+            background: -moz-linear-gradient(top,#90dfa2,#84d494);
+            background: linear-gradient(top,#90dfa2,#84d494);
+        }
+        .blue {
+            border:1px solid #1e7db9;
+            box-shadow: 0 1px 2px #8fcaee inset,0 -1px 0 #497897 inset,0 -2px 3px #8fcaee inset;
+            background: -webkit-linear-gradient(top,#42a4e0,#2e88c0);
+            background: -moz-linear-gradient(top,#42a4e0,#2e88c0);
+            background: linear-gradient(top,#42a4e0,#2e88c0);
+        }
     </style>
 
     <script>
-        function onOnlyButtonClicked() {            // QAQ，真的要习惯大括号不换行吗……
+        // 换了jQuery
+        $.LessFlag = false;
+        function onMoreClicked() {
+            if ($.LessFlag === false) {
+                //var breaks = document.getElementById("breaks");
+                for (var i = 1; i <= 50; i++) {
+                    //breaks.innerHTML = "<br/>" + breaks.innerHTML;
+                    $("#breaks").append("<br/>");
+                };
+                //document.getElementById("moreBtn").innerHTML = "Less";
+                $("#moreBtn").text("Less");
+                $("#breaks").append("<p>Ok, there is no more.</p><p>Actually I made this scroll bar so that you can see the full background image :p</p>");
+                location.hash = "#breaks";
+                $.LessFlag = true;
+            } else {
+                $("#breaks").text("");
+                $("#moreBtn").text("More");
+                location.hash = "";
+                $.LessFlag = false;
+            }
+        }
+
+        function onHmmClicked() {            // QAQ，真的要习惯大括号不换行吗……
             if (confirm("I said it is under construction! >.<\nHowever you may enjoy these awesome songs first.\n\nWould you like to view it on GitHub?")) {
-                //window.navigate("https://github.com/Equim-chan/equim-chan.github.io");        //本地测试无效
-                //window.location.href="https://github.com/Equim-chan/equim-chan.github.io";    //在当前页面跳转
-                window.open("https://github.com/Equim-chan/equim-chan.github.io");              //在新页面跳转
+                //window.navigate("https://github.com/Equim-chan/equim-chan.github.io");        // 本地测试无效
+                //window.location.href="https://github.com/Equim-chan/equim-chan.github.io";    // 在当前页面跳转
+                window.open("https://github.com/Equim-chan/equim-chan.github.io");              // 在新页面跳转
             }
         }
     </script>
@@ -63,14 +116,17 @@
             <img src="res/icon/construction.png" alt="construction" height="72" weight="72"/>
     </div>
 
-    <div style="text-align:center">
-        <button onclick="onOnlyButtonClicked()">Hmm?</button><br/>
-        <!-- 尝试修改iframe的透明度 -->
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="https://music.163.com/outchain/player?type=0&id=172103868&auto=1&height=430" allowtransparency="true"></iframe>
+    <div>
+        <button class="green" onclick="onHmmClicked()" style="margin-top:7px; margin-bottom:5px">Hmm?</button>
     </div>
 
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <div>
+        <!-- 尝试修改iframe的透明度 -->
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=415 src="https://music.163.com/outchain/player?type=0&id=172103868&auto=1&height=430" allowtransparency="true"></iframe>
+    </div>
 
-    <div>Ok, actually I made this scroll bar so that you can see the full background image :p</div>
+    <div id="breaks"></div>
+
+    <div><button id="moreBtn" class="blue" onclick="onMoreClicked()" style="margin-top:5px">More</button></div>
 </body>
 </html>
