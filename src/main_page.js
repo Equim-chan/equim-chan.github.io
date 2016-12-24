@@ -1,6 +1,8 @@
 // 换了jQuery
 $(function() {
+    // 初始化，只会执行一次
     $.LessFlag = false;
+    $("#blurStack").animate({opacity:1}, "medium");
 
     // 按钮与iframe的鼠标悬停响应
     $("button,iframe").mouseover(function() {
@@ -54,7 +56,7 @@ $(function() {
                 breaks.text("");
                 $("#moreBtn").text("More");
                 $("#blurStack").height("100%");
-                $("#moreBtn,#hmmBtn").animate({opacity:1}, 750);
+                $("#moreBtn,#hmmBtn").animate({opacity:1}, 500);
             });
         }
     });
