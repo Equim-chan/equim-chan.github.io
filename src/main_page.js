@@ -35,7 +35,8 @@ $(function() {
                 "</p>" + 
                 "<p>Just feel her breath~</p>");
             $("#blurStack").height($("body").height());
-            location.hash = "#breaks";
+            //location.hash = "#breaks";
+            $("html,body").animate({scrollTop: $("#breaks").offset().top}, 600);    //平滑跳转锚点
 
             // 呼吸式循环动画，颇有函数式编程的感觉
             $("#blurStack").stop();
@@ -47,20 +48,23 @@ $(function() {
 
             $.LessFlag = true;
         } else {
-            breaks.text("");
-            $(this).text("More");
-            $("#blurStack").height("100%");
-            location.hash = "";
             $.LessFlag = false;
+            $("#moreBtn,#hmmBtn").animate({opacity:0}, 250);
+            $("html,body").animate({scrollTop: "0px"}, 1000, function() {
+                breaks.text("");
+                $("#moreBtn").text("More");
+                $("#blurStack").height("100%");
+                $("#moreBtn,#hmmBtn").animate({opacity:1}, 750);
+            });
         }
     });
 
     // Hmm按钮的单击响应
-    $("#hmmBtn").click(function()  {            // QAQ，真的要习惯大括号不换行吗……
-        if (confirm("I said it is under construction! >.<\nHowever you may enjoy these awesome songs first.\n\nWould you like to view it on GitHub?")) {
+    //$("#hmmBtn").click(function()  {            // QAQ，真的要习惯大括号不换行吗……
+    //    if (confirm("I said it is under construction! >.<\nHowever you may enjoy these awesome songs first.\n\nWould you like to view it on GitHub?")) {
             //window.navigate("https://github.com/Equim-chan/equim-chan.github.io");        // 本地测试无效
             //window.location.href="https://github.com/Equim-chan/equim-chan.github.io";    // 在当前页面跳转
-            window.open("https://github.com/Equim-chan/equim-chan.github.io");              // 在新页面跳转
-        }
-    });
+    //        window.open("https://github.com/Equim-chan/equim-chan.github.io");              // 在新页面跳转
+    //    }
+    //});
 });

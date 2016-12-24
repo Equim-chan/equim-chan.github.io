@@ -11,11 +11,16 @@
 
 <html>
 <head>
+    <meta charset="utf-8"> 
     <title>Equim's Practice Zone</title>
-    <link rel="icon" href="res/icon/head.ico" type="image/x-ico" />
+    <link rel="icon" href="res/icon/head.ico" type="image/x-ico">
 
     <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="res/css/buttons.css" />
+    <script src="https://cdn.bootcss.com/bootstrap-modal/2.2.6/js/bootstrap-modalmanager.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-modal/2.2.6/js/bootstrap-modal.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap-modal/2.2.6/css/bootstrap-modal.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap-modal/2.2.6/css/bootstrap-modal-bs3patch.min.css" rel="stylesheet">
+    <link href="res/css/buttons.css" rel="stylesheet">
 
     <script src="src/main_page.js"></script>
     <style type="text/css">
@@ -27,10 +32,10 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: 100%;
-            margin: auto;
+            margin: 0;
         }
         .glass {
-            /* 感谢上海柠柚的帮助 */
+            /* 感谢wpcap的帮助 */
             width: 100%;
             height: 100%;
             position: absolute;
@@ -49,6 +54,9 @@
 
         p {
             margin: 4px;
+        }
+        .plain {
+            font-family: Microsoft YaHei, cursive, sans-serif;
         }
 
         div {
@@ -110,19 +118,48 @@
         <img src="res/icon/construction.png" alt="construction" height="72" weight="72"/>
     </div>
 
-    <div>
-        <button id="hmmBtn" class="button big green" style="width:240px; margin-top:7px; margin-bottom:5px; cursor:pointer;">Hmm?</button>
-    </div>
-
-    <div>
+    <div style="margin-top:25px">
         <!-- 尝试修改iframe的透明度 -->
         <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=415 src="https://music.163.com/outchain/player?type=0&id=172103868&auto=1&height=430" allowtransparency="true"></iframe>
     </div>
 
     <div id="breaks"></div>
 
-    <div>
+    <div style="margin-top:15px">
+        <button id="hmmBtn" class="button big green" style="width:240px; margin-right:15px; cursor:pointer;" data-toggle="modal" data-target="#hmmModal">Hmm?</button>
+
+        <!-- 用了Bootstrap的Modal -->
+        <div class="modal fade" id="hmmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" style="background:black">
+                            <div class="coolTitle" style="color:white; text-shadow:0 0 0 #000000;">Oops...</div>
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <p class="plain" title="Nope, isn't this page is always &quot;under construction&quot;? →_→">
+                            <strong>I said it is under construction! >.<</strong>
+                        </p>
+                        <p class="plain">However you may enjoy these awesome songs first.</p>
+                        <br/>
+                        <p class="plain">Would you like to view it on GitHub?</p>
+                        <br/>
+                    </div>
+                    <div class="modal-footer" style="background:lightgrey">
+                        <!-- 这段写得真是绕来绕去的orz -->
+                        <input type="button" value="Yes" class="button medium green" style="width:180px; margin:15px" data-dismiss="modal" onClick="window.open('https://github.com/Equim-chan/equim-chan.github.io');"/>
+                        <button type="button" class="button medium orange" style="width:180px;" data-dismiss="modal">
+                            Later
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <button id="moreBtn" class="button big blue" style="width:240px; cursor:pointer;">More</button>
+        <br/><br/>
     </div>
 </body>
 </html>
