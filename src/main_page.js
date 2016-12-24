@@ -2,7 +2,7 @@
 $(function() {
     // 初始化，只会执行一次
     $.LessFlag = false;
-    $("#blurStack").animate({opacity:1}, "medium");
+    $("#blurStack").css("opacity", "1");     //在moz下无效，原因不明
 
     // 按钮与iframe的鼠标悬停响应
     $("button,iframe").mouseover(function() {
