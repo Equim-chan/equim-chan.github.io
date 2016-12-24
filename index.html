@@ -26,6 +26,24 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: 100%;
+            margin: auto;
+        }
+        .glass {
+            /* 感谢上海柠柚的帮助 */
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: -999;
+            background: inherit;
+
+            filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
+            
+            -webkit-filter: blur(7px); /* Chrome, Opera */
+               -moz-filter: blur(7px);
+                -ms-filter: blur(7px);
+                    filter: blur(7px);
+            
+            filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
         }
 
         p {
@@ -79,7 +97,17 @@
 
     <script>
         // 换了jQuery
-        $(document).ready(function() {
+        $(function() {
+            // 按钮与iframe的鼠标悬停响应
+            $("button,iframe").mouseover(function() {
+                $("#blurStack").stop();
+                $("#blurStack").animate({opacity:0}, "slow");
+            });
+            $("button,iframe").mouseleave(function() {
+                $("#blurStack").stop();
+                $("#blurStack").animate({opacity:1}, "slow");
+            });
+
             // More按钮的单击响应
             $.LessFlag = false;
             $("#moreBtn").click(function() {
@@ -98,11 +126,13 @@
                         "<p title='And literally this page is always \"under construction\" xD.'>" +
                             "Actually I made this scroll bar so that you can see the full background image :p" +
                         "</p>");
+                    $("#blurStack").height($("body").height());
                     location.hash = "#breaks";
                     $.LessFlag = true;
                 } else {
                     breaks.text("");
                     $(this).text("More");
+                    $("#blurStack").height("100%");
                     location.hash = "";
                     $.LessFlag = false;
                 }
@@ -121,10 +151,12 @@
 </head>
 
 <body>
+    <div id="blurStack" class="glass"></div>
+
     <div class="coolTitle">
-            <img src="res/icon/construction.png" alt="construction" height="72" weight="72"/>
-            <label>This page is under construction.</label>
-            <img src="res/icon/construction.png" alt="construction" height="72" weight="72"/>
+        <img src="res/icon/construction.png" alt="construction" height="72" weight="72"/>
+        <label>This page is under construction.</label>
+        <img src="res/icon/construction.png" alt="construction" height="72" weight="72"/>
     </div>
 
     <div>
