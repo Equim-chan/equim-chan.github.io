@@ -2,7 +2,6 @@
 
 <!--
     TODO:
-    * 把CSS和JS从HTML中单独分离，放到src/
     * 完成背景透视效果
     * 创建DateCalc分支
     * 完成DateCalc业务逻辑的移植
@@ -16,7 +15,9 @@
     <link rel="icon" href="res/icon/head.ico" type="image/x-ico" />
 
     <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="res/css/buttons.css" />
 
+    <script src="src/main_page.js"></script>
     <style type="text/css">
         /* CSS3，设置background-size:100%可以自适应背景图片，且保持比例不变 */
         body {
@@ -26,6 +27,24 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: 100%;
+            margin: auto;
+        }
+        .glass {
+            /* 感谢上海柠柚的帮助 */
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: -999;
+            background: inherit;
+
+            filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
+            
+            -webkit-filter: blur(7px); /* Chrome, Opera */
+               -moz-filter: blur(7px);
+                -ms-filter: blur(7px);
+                    filter: blur(7px);
+            
+            filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=7, MakeShadow=false); /* IE6~IE9 */
         }
 
         p {
@@ -49,11 +68,12 @@
             text-decoration: underline;
         }
 
-        button{  
-            width: 140px;
+        /*button{  
+            width: 240px;
             line-height: 38px;
             text-align: center;
-            font-weight: bold;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-size: 100%;
             color: #fff;
             text-shadow:1px 1px 1px #333;
             border-radius: 5px;
@@ -74,61 +94,21 @@
             background: -webkit-linear-gradient(top,#42a4e0,#2e88c0);
             background: -moz-linear-gradient(top,#42a4e0,#2e88c0);
             background: linear-gradient(top,#42a4e0,#2e88c0);
-        }
+        }*/
     </style>
-
-    <script>
-        // 换了jQuery
-        $(document).ready(function() {
-            // More按钮的单击响应
-            $.LessFlag = false;
-            $("#moreBtn").click(function() {
-                //var breaks = document.getElementById("breaks");
-                var breaks = $("#breaks");
-                if ($.LessFlag === false) {
-                    for (var i = 1; i <= 50; i++) {
-                        //breaks.innerHTML = "<br/>" + breaks.innerHTML;
-                        breaks.append("<br/>");
-                    };
-                    //document.getElementById("moreBtn").innerHTML = "Less";
-                    $(this).text("Less");
-
-                    // 这个方法有点粗暴，但确实有效
-                    breaks.append("<p>Ok, there is no more.</p>" +
-                        "<p title='And literally this page is always \"under construction\" xD.'>" +
-                            "Actually I made this scroll bar so that you can see the full background image :p" +
-                        "</p>");
-                    location.hash = "#breaks";
-                    $.LessFlag = true;
-                } else {
-                    breaks.text("");
-                    $(this).text("More");
-                    location.hash = "";
-                    $.LessFlag = false;
-                }
-            });
-
-            // Hmm按钮的单击响应
-            $("#hmmBtn").click(function()  {            // QAQ，真的要习惯大括号不换行吗……
-                if (confirm("I said it is under construction! >.<\nHowever you may enjoy these awesome songs first.\n\nWould you like to view it on GitHub?")) {
-                    //window.navigate("https://github.com/Equim-chan/equim-chan.github.io");        // 本地测试无效
-                    //window.location.href="https://github.com/Equim-chan/equim-chan.github.io";    // 在当前页面跳转
-                    window.open("https://github.com/Equim-chan/equim-chan.github.io");              // 在新页面跳转
-                }
-            });
-        });
-    </script>
 </head>
 
 <body>
+    <div id="blurStack" class="glass"></div>
+
     <div class="coolTitle">
-            <img src="res/icon/construction.png" alt="construction" height="72" weight="72"/>
-            <label>This page is under construction.</label>
-            <img src="res/icon/construction.png" alt="construction" height="72" weight="72"/>
+        <img src="res/icon/construction.png" alt="construction" height="72" weight="72"/>
+        <label>This page is under construction.</label>
+        <img src="res/icon/construction.png" alt="construction" height="72" weight="72"/>
     </div>
 
     <div>
-        <button id="hmmBtn" class="green" style="margin-top:7px; margin-bottom:5px; cursor:pointer;">Hmm?</button>
+        <button id="hmmBtn" class="button big green" style="width:240px; margin-top:7px; margin-bottom:5px; cursor:pointer;">Hmm?</button>
     </div>
 
     <div>
@@ -139,7 +119,7 @@
     <div id="breaks"></div>
 
     <div>
-        <button id="moreBtn" class="blue" style="margin-top:5px; cursor:pointer;">More</button>
+        <button id="moreBtn" class="button big blue" style="width:240px; cursor:pointer;">More</button>
     </div>
 </body>
 </html>
