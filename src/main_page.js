@@ -79,7 +79,7 @@ $(function() {
                 "<p>Just feel her breath~</p>");
             $("#blurStack,#monokuroStack").height($("body").height());
             //location.hash = "#breaks";
-            $("html,body").animate({scrollTop: $("#breaks").offset().top}, 600);    //平滑跳转锚点
+            $("body").animate({scrollTop: $("#breaks").offset().top}, 600);    //平滑跳转锚点
 
             // 呼吸式循环动画，颇有函数式编程的感觉
             $("body").stop();
@@ -95,13 +95,15 @@ $(function() {
 
             $.LessFlag = true;
         } else {
-            $.LessFlag = false;
-            $("#moreBtn,#hmmBtn").animate({opacity:0}, 250);
-            $("html,body").animate({scrollTop: "0px"}, 1000, function() {
+            $("#moreBtn,#hmmBtn").animate({opacity: 0}, 250);
+            // ! ISSUE !
+            // 响应速度变慢了，可能会卡死！随之而来的还有更多的问题！
+            $("body").animate({scrollTop: "0"}, 1000, function() {
                 breaks.text("");
                 $("#moreBtn").text("More");
                 $("#blurStack,#monokuroStack").height("100%");
                 $("#moreBtn,#hmmBtn").animate({opacity:1}, 500);
+                $.LessFlag = false;
             });
         }
     });
