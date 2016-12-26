@@ -2,47 +2,48 @@
 $(function() {
     // 初始化，只会执行一次
     $.LessFlag = false;
+    //$.OverIframe = false;
     $("#blurStack").css("opacity", "1");     //在moz下无效，原因不明
     $("body").animate({backgroundSize: "104%"}, 1200);
 
     // 按钮与iframe的鼠标悬停响应
     $("button,input,iframe").on({
         mouseover: function() {
+            $("#monokuroStack").stop().animate({opacity: 0}, 2000);
             if (!$.LessFlag) {
-                $("#blurStack").stop();
-                $("#monokuroStack").stop();
-                $("body").stop();
-                $("#blurStack").animate({opacity: 0}, "slow");
-                $("body").animate({backgroundSize: "103%"}, 1200);
-                $("#monokuroStack").animate({opacity: 0}, 2000);
+                $("#blurStack").stop().animate({opacity: 0}, "slow");
+                $("body").stop().animate({backgroundSize: "103%"}, 1200);
             }
         },
         mouseleave: function() {
+            $("#monokuroStack").stop().animate({opacity: 0}, 2000);
             if (!$.LessFlag) {
-                $("#blurStack").stop();
-                $("#monokuroStack").stop();
-                $("body").stop();
-                $("#blurStack").animate({opacity: 1}, "slow");
-                $("body").animate({backgroundSize: "104%"}, 1200);
-                $("#monokuroStack").animate({opacity: 0}, 2000);
+                $("#blurStack").stop().animate({opacity: 1}, "slow");
+                $("body").stop().animate({backgroundSize: "104%"}, 1200);
             }
         }
     });
 
     // 单独设置iframe的鼠标悬停，考虑到跨域iframe的mousemove尚未解决
     $("iframe").mouseover(function() {
-        $("#monokuroStack").stop();     //这句看似多余，不过如果少了的话，动画就不是异步的了
-        $("#monokuroStack").animate({opacity: 1}, 2000);
+        //$.OverIframe = true;
+        $("#monokuroStack").stop().animate({opacity: 1}, 2000);
     });
 
     // 响应鼠标移动，以改变透视视图
     var persp = function(e) {
-        // $("body").css("backgroundPosition", 
-        //     ($(window).width() / 2 - e.pageX) * 0.03 + "px " + 
-        //     ($(window).height() / 2 - e.pageY) * 0.03 + "px");
-        $("body").css("backgroundPosition", 
-            - e.pageX * 0.03 + "px " + 
-            - e.pageY * 0.03 + "px");
+        // if (!$.OverIframe) {
+            $("body").css("backgroundPosition", 
+                - e.pageX * 0.03 + "px " + 
+                - e.pageY * 0.03 + "px");
+        // } else {
+        //     $("body").stop().animate({
+        //         backgroundPositionX: - e.pageX * 0.03 + "px",
+        //         backgroundPositionY: - e.pageY * 0.03 + "px"
+        //     }, 500, "swing", function() {
+        //         $.OverIframe = false;
+        //     });
+        // }
     };
     $(window).mousemove(persp);
 
@@ -76,7 +77,7 @@ $(function() {
                     "Actually I made this scroll bar so that you can see the full background image :p" +
                 "</p>" + 
                 "<p>Just feel her breath~</p>");
-            $("#blurStack,#mask").height($("body").height());
+            $("#blurStack,#monokuroStack").height($("body").height());
             //location.hash = "#breaks";
             $("html,body").animate({scrollTop: $("#breaks").offset().top}, 600);    //平滑跳转锚点
 
@@ -99,7 +100,7 @@ $(function() {
             $("html,body").animate({scrollTop: "0px"}, 1000, function() {
                 breaks.text("");
                 $("#moreBtn").text("More");
-                $("#blurStack,#mask").height("100%");
+                $("#blurStack,#monokuroStack").height("100%");
                 $("#moreBtn,#hmmBtn").animate({opacity:1}, 500);
             });
         }
@@ -114,3 +115,5 @@ $(function() {
     //    }
     //});
 });
+
+// Enjoy~
