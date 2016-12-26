@@ -11,7 +11,12 @@
 
 <html>
 <head>
-    <meta charset="utf-8"> 
+    <meta charset="utf-8">
+    <meta name="keywords" content="personal,blog"> 
+    <meta name="description" content="「緩やかに崩れ壊れてく...」">
+    <meta name="robots" content="noindex">
+    <meta name="author" content="Equim,vivian@equimcute.com">
+
     <title>Equim's Practice Zone</title>
     <link rel="icon" href="res/icon/head.ico" type="image/x-ico">
 
@@ -31,7 +36,8 @@
             background: url("https://raw.githubusercontent.com/Equim-chan/equim-chan.github.io/master/res/img/BG.jpg");
             background-repeat: no-repeat;
             background-attachment: fixed;
-            background-size: 100%;
+            background-size: 103%;
+            background-position: 0 0;       /* 这里之前是center center，但是鼠标在左上的时候会露出白边 */
             margin: 0;
         }
         .glass {
@@ -50,6 +56,22 @@
                     filter: blur(7px);
             
             filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=7, MakeShadow=false); /* IE6~IE9 */
+        }
+        .monokuro {
+            opacity: 0;
+            
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: -999;
+            background: inherit;
+
+            -webkit-filter: grayscale(100%); 
+               -moz-filter: grayscale(100%); 
+                -ms-filter: grayscale(100%); 
+                 -o-filter: grayscale(100%); 
+                    filter: grayscale(100%); 
+                    filter: gray; 
         }
 
         p {
@@ -104,13 +126,12 @@
             background: linear-gradient(top,#42a4e0,#2e88c0);
         }*/
     </style>
-
-    <script>
-    </script>
 </head>
 
 <body>
     <div id="blurStack" class="glass"></div>
+    <div id="monokuroStack" class="monokuro"></div>
+    <!-- <a id="mask" style="border: 0; width: 100%; height: 100%; position: absolute; z-index: 9999; pointer-events: none;"></a> -->
 
     <div class="coolTitle">
         <img src="res/icon/construction.png" alt="construction" height="72" weight="72"/>
@@ -120,7 +141,7 @@
 
     <div style="margin-top:25px">
         <!-- 尝试修改iframe的透明度 -->
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=415 src="https://music.163.com/outchain/player?type=0&id=172103868&auto=1&height=430" allowtransparency="true"></iframe>
+        <iframe id="cloud" frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=415 src="https://music.163.com/outchain/player?type=0&id=172103868&auto=1&height=430" allowtransparency="true"></iframe>
     </div>
 
     <div id="breaks"></div>
