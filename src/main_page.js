@@ -80,13 +80,13 @@ $(function() {
 
             $.LessFlag = true;
         } else {
-            $("#moreBtn, #hmmBtn").animate({opacity: 0}, 250);
+            $("#moreBtn, #hmmBtn, #shareBtns").animate({opacity: 0}, 250);
             $("body").stop(true, true);       // debug一整天的结果，就是加上了这句话，然后就解决了(
             $("html, body").animate({scrollTop: "0px"}, 1000, function() {
                 breaks.text("");
                 $("#moreBtn").text("More");
                 $("#blurStack, #monokuroStack").height("100%");
-                $("#moreBtn, #hmmBtn").animate({opacity:1}, 500);
+                $("#moreBtn, #hmmBtn, #shareBtns").animate({opacity:1}, 500);
                 $.LessFlag = false;
             });
         }
