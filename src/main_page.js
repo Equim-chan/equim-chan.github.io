@@ -92,14 +92,7 @@ $(function() {
         }
     });
 
-    // Hmm按钮的单击响应，现已改为用Bootstrap Modal
-    //$("#hmmBtn").click(function()  {            // QAQ，真的要习惯大括号不换行吗……
-    //    if (confirm("I said it is under construction! >.<\nHowever you may enjoy these awesome songs first.\n\nWould you like to view it on GitHub?")) {
-            //window.navigate("https://github.com/Equim-chan/equim-chan.github.io");        // 本地测试无效
-            //window.location.href="https://github.com/Equim-chan/equim-chan.github.io";    // 在当前页面跳转
-    //        window.open("https://github.com/Equim-chan/equim-chan.github.io");              // 在新页面跳转
-    //    }
-    //});
+    // Hmm按钮的单击响应现已改为用Bootstrap Modal
 });
 
 // Enjoy~
