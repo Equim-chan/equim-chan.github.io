@@ -1,4 +1,3 @@
-// 换了jQuery
 $(function() {
     // 初始化，只会执行一次
     $.LessFlag = false;
