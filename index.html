@@ -5,6 +5,8 @@
     * 完成背景透视效果
     * 创建DateCalc分支
     * 完成DateCalc业务逻辑的移植
+    * 增加分享API
+    * 如果真的有闲情，把body的BG改为div的BG，然后扩大到body的范围外，让放大缩小以中点为中心
     * ...
 -->
 
@@ -35,7 +37,7 @@
             background: url("https://raw.githubusercontent.com/Equim-chan/equim-chan.github.io/master/res/img/BG.jpg");
             background-repeat: no-repeat;
             background-attachment: fixed;
-            background-size: 103%;
+            background-size: 100%;
             background-position: 0 0;       /* 这里之前是center center，但是鼠标在左上的时候会露出白边 */
             margin: 0;
         }
@@ -96,41 +98,13 @@
             /*font-weight: bold;*/
             text-decoration: underline;
         }
-
-        /*button{  
-            width: 240px;
-            line-height: 38px;
-            text-align: center;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            font-size: 100%;
-            color: #fff;
-            text-shadow:1px 1px 1px #333;
-            border-radius: 5px;
-            margin:0 20px 20px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .green{
-            border:1px solid #64c878;
-            box-shadow: 0 1px 2px #b9ecc4 inset,0 -1px 0 #6c9f76 inset,0 -2px 3px #b9ecc4 inset;
-            background: -webkit-linear-gradient(top,#90dfa2,#84d494);
-            background: -moz-linear-gradient(top,#90dfa2,#84d494);
-            background: linear-gradient(top,#90dfa2,#84d494);
-        }
-        .blue {
-            border:1px solid #1e7db9;
-            box-shadow: 0 1px 2px #8fcaee inset,0 -1px 0 #497897 inset,0 -2px 3px #8fcaee inset;
-            background: -webkit-linear-gradient(top,#42a4e0,#2e88c0);
-            background: -moz-linear-gradient(top,#42a4e0,#2e88c0);
-            background: linear-gradient(top,#42a4e0,#2e88c0);
-        }*/
     </style>
 </head>
 
 <body>
     <div id="blurStack" class="glass"></div>
     <div id="monokuroStack" class="monokuro"></div>
-    <!-- <a id="mask" style="border: 0; width: 100%; height: 100%; position: absolute; z-index: 9999; pointer-events: none;"></a> -->
+    <!-- <a id="mask" style="border: 0; width: 100%; height: 100%; position: absolute; z-index: 9999; pointer-events: none;"></a> --> <!-- 之前打算用来做iframe的遮罩，以响应mousemove，结果发现这和设置iframe的point-events为none效果一样 -->
 
     <div class="coolTitle">
         <img src="res/icon/construction.png" alt="construction" height="72" weight="72"/>
@@ -139,7 +113,6 @@
     </div>
 
     <div style="margin-top:25px">
-        <!-- 尝试修改iframe的透明度 -->
         <iframe id="cloud" frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=415 src="https://music.163.com/outchain/player?type=0&id=172103868&auto=1&height=430" allowtransparency="true"></iframe>
     </div>
 
@@ -177,9 +150,13 @@
             </div>
         </div>
 
-
         <button id="moreBtn" class="button big blue" style="width:240px; cursor:pointer;">More</button>
-        <br/><br/>
+    </div>
+
+    <br/>
+
+    <div> <!-- 分享，WIP -->
+        
     </div>
 </body>
 </html>
