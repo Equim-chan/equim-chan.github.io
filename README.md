@@ -8,14 +8,14 @@
 ## Trivia
 
 * __"A page that is always under construction."__  
-You may see this sentence in the "description" part of the meta. Sentences with similar meaning can also be seen in some inconspicuous part of this page.  
+You may see this sentence in the "description" part of the metadata. Sentences with similar meaning can also be seen in some inconspicuous part of this page.  
 The reason why I wrote this is I think knowledge is infinite. The more ideas I want to implement, the more techniques I need to learn; the more technique I have learned, the more ideas I will come up with. Hence this page will never be completed.  
 Maybe someday when I add more branches with the content and features of the site enriched, the "under construction" sign will be temporarily removed.
 
 * __"Equimのディア"__  
 The title of the page.  
 僕はね、現実には「ディア」と「ソールメート」と、更に「好きな人」はほとんどないし、このサイトは僕が作って、「僕のディア」と言えば過ぎないと思うんだ。熱い感情を傾けて一生懸命作ったコードとずっと一緒にいればいいな。C#ちゃんとも、JSちゃんとも、そしてそれぞれの他の言語ちゃんも、とても可愛い子だね。  
-なんか、ずいぶん感傷になったね。
+なんか、ずいぶん感傷的な気分になったね。
 
 * __Japanese?__  
 Yes. Since it is a "practice zone", not only programming languages, but also natural languages are to be practiced here.
