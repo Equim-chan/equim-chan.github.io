@@ -1,3 +1,5 @@
+## Description
+
 * Equim's HTML/CSS/JS practice zone. Link: http://equimcute.com
 
 ## TODO
