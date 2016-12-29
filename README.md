@@ -33,7 +33,7 @@ I failed to catch the "mousemove" event within the iframe and process it in the 
 ## Reference
 
 * [jQuery](https://github.com/jquery/jquery), lisenced under MIT.
-* [Bootstrap](http://www.bootcss.com/), lisenced under MIT.
+* [Bootstrap Modal](http://jschr.github.io/bootstrap-modal/), lisenced under Apache License v2.0.
 * [share.js](https://github.com/overtrue/share.js), lisenced under MIT.
 
 ## Lisence
