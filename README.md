@@ -1,6 +1,6 @@
 ## Description
 
-* Equim's HTML/CSS/JS practice zone. Link: http://equimcute.com
+* Equim's HTML/CSS/JS practice zone. Link: http://deprecated.equimcute.com
 
 ## TODO
 
@@ -36,5 +36,5 @@ I failed to catch the "mousemove" event within the iframe and process it in the 
 * [Bootstrap Modal](http://jschr.github.io/bootstrap-modal/), lisenced under Apache License v2.0.
 * [share.js](https://github.com/overtrue/share.js), lisenced under MIT.
 
-## Lisence
+## License
 * [MIT License](https://github.com/Equim-chan/equim-chan.github.io/blob/master/LICENSE)
